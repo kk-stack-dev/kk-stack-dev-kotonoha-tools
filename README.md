@@ -16,7 +16,8 @@
 ## 新しいビルドを出す
 
 1. `.github/workflows/build.yml` の `WHISPER_REF` と `LLAMA_REF` を更新して main に push し、ビルドが通ることを確かめる
-2. `tools-v<番号>` のタグを付けて push する。リリースが作られ、実行ファイル、`SHA256SUMS`、各プロジェクトのライセンス、`catalog.rs` が付く
+2. Actions の Build を「Run workflow」から実行し、`release` に `tools-v<番号>` を入れる（同じ名前のタグを push しても同じ）。
+   リリースが作られ、実行ファイル、`SHA256SUMS`、各プロジェクトのライセンス、`catalog.rs` が付く
 3. `catalog.rs` の中身を Kotonoha の `crates/kotonoha-core/src/tools.rs` の `TOOL_CATALOG` に貼る
 
 Kotonoha は `TOOL_CATALOG` の SHA-256 と一致したファイルだけを使います。公開済みのリリースのファイルは差し替えないでください。
