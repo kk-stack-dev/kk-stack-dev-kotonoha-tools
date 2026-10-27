@@ -165,6 +165,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           # Creates the tag on the built commit when it does not exist yet
-          gh release create "$TAG" out/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+          # Not "latest": that name is kept for app releases, which install.sh and install.ps1 fetch
+          gh release create "$TAG" out/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --latest=false \
             --title "Tools $TAG" \
             --notes "whisper.cpp ${WHISPER_REF} and llama.cpp ${LLAMA_REF}, downloaded by Kotonoha during setup. Entries for TOOL_CATALOG are in catalog.rs."
